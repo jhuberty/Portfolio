@@ -82,6 +82,7 @@ Edit these placeholders in `index.html`:
 - Interactions (menu/lightbox): edit `/home/runner/work/Portfolio/Portfolio/script.js`.
 - Add new projects by creating another `projects/*.html` page and linking it in `index.html`.
 
+
 ## Current structure
 
 ```text
