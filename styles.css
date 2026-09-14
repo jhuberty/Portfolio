@@ -158,28 +158,41 @@ iframe {
   cursor: zoom-in;
 }
 
+.lightbox[hidden] { display: none !important; }
+
 .lightbox {
-  .lightbox[hidden] { display: none !important; }
   position: fixed;
   inset: 0;
   background: rgba(20, 24, 28, 0.85);
   display: grid;
   place-items: center;
   padding: 1rem;
-  z-index: 100;
+  z-index: 9999;
 }
-.lightbox img { max-height: 88vh; max-width: 92vw; object-fit: contain; }
+
+.lightbox img {
+  max-height: 88vh;
+  max-width: 92vw;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+  cursor: zoom-out;
+}
+
 .lightbox-close {
-  position: absolute;
+  position: fixed;
   top: 1rem;
   right: 1rem;
+  width: 44px;
+  height: 44px;
   border: 1px solid #fff;
+  border-radius: 999px;
   color: #fff;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.6);
   font-size: 2rem;
   line-height: 1;
-  z-index: 2;
-cursor: pointer;
+  z-index: 10000;
+  cursor: pointer;
 }
 
 @media (max-width: 900px) {
