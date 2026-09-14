@@ -26,12 +26,15 @@ if (lightbox) {
 
   document.querySelectorAll('img[data-lightbox], .gallery img').forEach((image) => {
     image.setAttribute('tabindex', '0');
+
     const open = () => {
       lightboxImage.src = image.src;
       lightboxImage.alt = image.alt;
       lightbox.hidden = false;
+      document.body.style.overflow = 'hidden';
       closeButton.focus();
     };
+
     image.addEventListener('click', open);
     image.addEventListener('keydown', (event) => {
       if (event.key === 'Enter' || event.key === ' ') {
@@ -44,12 +47,14 @@ if (lightbox) {
   const closeLightbox = () => {
     lightbox.hidden = true;
     lightboxImage.src = '';
+    document.body.style.overflow = '';
   };
 
   closeButton.addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', (event) => {
-    if (event.target === lightbox) closeLightbox();
+    if (event.target === lightbox || event.target === lightboxImage) closeLightbox();
   });
+
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && !lightbox.hidden) closeLightbox();
   });
